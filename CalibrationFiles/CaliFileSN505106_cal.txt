@@ -1,0 +1,7 @@
+Description;Slope;Intercept;Units;StandardDeviation;Variance
+
+Torque;-33.4797;0;Nm;0;
+Load;9813.3;0;N;0;
+Rotation_1;71.3080;0;deg;0;
+Rotation_2;-71.9947;0;deg;0;
+vertical_Displacement;-2.11152;11.8801;mm;0.172272;0.0296778
