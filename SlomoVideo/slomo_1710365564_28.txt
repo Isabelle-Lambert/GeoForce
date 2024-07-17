@@ -1,0 +1,83 @@
+Camera time:	Wed Mar 13 21:42:02 2024	
+Model:	SC2+ Monochrome 16 GB No IR Filter	
+
+Camera Name:	
+Sensitivity:	6400	ISO
+Shutter:	1/10400	Seconds
+Pre-trigger Frame Rate:	10000.6	Frames/Second
+Post-trigger 1 Frame Rate:	10000.6	Frames/Second
+Post-trigger 2 Frame Rate:	30	Frames/Second
+Horizontal:	512	Pixels
+Vertical:	256	Pixels
+Horizontal Offset:	0	Pixels
+Vertical Offset:	0	Pixels
+Sub-sampling:	Off	sub-sample
+Pre-trigger Duration:	0.8	Seconds
+Post-trigger 1 Duration:	0.2	Seconds
+Post-trigger 2 Duration:	0	Seconds
+Overclock:	0	level
+Extended Dynamic Range:	0	level
+Genlock:	Off	genlock
+Force monochrome:	Off	Sensor behaves normally
+Multishot Buffers:	13	buffers
+External trigger debounce:	On	5 ms debounce delay after external trigger falling edge
+Gamma correction:	On	gamma correction enabled
+Save mode:	Background	Allow new video capture while saving in background, save oldest first
+Notes:	
+Overlay notes:	Off	disabled
+Overlay logo:	Off	disabled
+Overlay settings:	Off	disabled
+Overlay frame number:	Off	disabled
+Active pipeline:	H264HIGH:pipelines_factory.txt	configuration
+Encode frame rate:	30/1	fps
+Filename pattern:	&D	may include subdirectories and wildcards
+Save view:	On	enabled
+Auto exposure:	Off	disabled
+Pipeline description:	H.264 high encode quality QuickTime file	 
+
+Multishot buffer:	28	number
+Frame count:	10000	frames
+Pre-trigger frames:	8000	frames
+Post-trigger 1 frames:	2000	frames
+Post-trigger 2 frames:	0	frames
+Trigger time:	1710365564	(sec since 1970)
+Trigger delay:	0.000057714	sec (time from trigger input to start of triggered frame)
+First saved frame:	-8000	where frame zero is the trigger frame
+Last saved frame:	1999	where frame zero is the trigger frame
+Save frame rate:	59	fps
+Playback framerate:	30	frames/sec
+Genlock locked:	NA	
+
+FPGA temp:	36	C
+FPGA temp at last calibration:	35	C
+DDR3 temp:	43	C
+DDR3 temp at last calibration:	42	C
+Sensor temp:	33	C
+Sensor temp at last calibration:	31	C
+Time since dark frame:	2 hours, 25 minutes
+Time since power on:	2 hours, 57 minutes	
+
+Model number:	0x0002	
+Serial number:	0x097A	
+Hardware revision:	0x0002	
+Hardware configuration:	0xFF001B	
+Build date:	20230728	(YYYYMMDD)
+IR filter:	False	IR filter is not installed
+Sensor type:	Monochrome	sensor
+DDR3 memory size:	16	GB
+Ethernet MAC address:	00:1B:C5:09:69:7A	
+FPGA version:	87 Sat Jan 08 11:28:34 2022 0xDD10
+Software build date:	20220414215459	(YYYYMMDDhhmmss)
+Software version:	v2.5.2rc32	release
+NVRAM write count:	534	writes
+Total power on time:	1193	minutes
+Total power cycles:	41	cycles
+Total videos saved:	130	videos
+IS minimum temperature:	24	C
+IS maximum temperature:	37	C
+FPGA minimum temperature:	25	C
+FPGA maximum temperature:	43	C
+DDR3 minimum temperature:	22	C
+DDR3 maximum temperature:	55	C
+Total calibration count:	77	calibrations
+Interrupted calibration count:	0	attempts
