@@ -8,9 +8,13 @@ clear; close all; clc
 shiftGMT_h = 5;           % hour shift between GMT and Austin time
 r1_m       = 0.5*15e-3;   % sample outer radius, m
 r2_m       = 0.5*3e-3;    % sample inner radius, m
-fil        = 11;          % filter for moving average
+TimeOff_s  = 54.8-23.5251;           % time offset between video and mechanical data
+
+%% parameters not to be changed
 CorrK      = 27.3937;     % coefficient to correct the torque
-TimeOff_s  = 114.8-83.5252; % offset between video and mechanical data
+fil        = 21;          % filter for moving average
+
+%114.8-83.5252; % offset between video and mechanical data
 
 % %% Load calibration from a txt file (NOT USED)
 % disp('Loading calibration...');
@@ -24,7 +28,7 @@ TimeOff_s  = 114.8-83.5252; % offset between video and mechanical data
 vidFiles   = dir(fullfile(".","SlomoVideo","*.mov"));
 CamUnix_s = sscanf([vidFiles.name],"slomo_%d_%d.mov");
 FileN     = CamUnix_s(2:2:end);
-CamUnix_s = CamUnix_s(1:2:end)-shiftGMT_h*3600;
+CamUnix_s = CamUnix_s(1:2:end)-shiftGMT_h*3600-TimeOff_s;
 
 %% load mechanical data
 files = dir(fullfile('.','MechanicalData','00*.mat'));
@@ -45,6 +49,7 @@ end
 
 %% apply calibrations to data
 t_s             = t_s+StartUnix_s;
+data            = movmean(data,fil);
 M_Nm            = data(:,1).*cal.Slope(1)+cal.Intercept(1);
 F_N             = data(:,2).*cal.Slope(2)+cal.Intercept(2);
 F_N             = F_N - (CorrK*M_Nm);
@@ -56,7 +61,7 @@ Pressure        = data(:,7);
 Trigger         = data(:,8);
 clear data dataS
 
-%% plot all separated data (data are decimated for speed)
+%% plot all separated data (data are shown decimated for speed)
 figure
 DCf=50;
 set(gcf,'position',[200 100 1400 1000]);
@@ -98,7 +103,7 @@ linkaxes(ax,'x');
 Area_m2         = pi*(r1_m^2 - r2_m^2);
 NormalStress_Pa = F_N./Area_m2;
 ShearStress_Pa  = 3*M_Nm./(pi*2*(r1_m^3-r2_m^3));
-Friction        = movmean(ShearStress_Pa./NormalStress_Pa,fil);
+Friction        = ShearStress_Pa./NormalStress_Pa;
 
 %% plot
 figure
@@ -109,7 +114,7 @@ plot(t_s(1:10:end)-t_s(1),Friction(1:10:end));
 xlim([0 t_s(end)-t_s(1)]); % limit the x axis
 xlabel('time, s');
 ylabel('friction ({\mu})');
-title(sprintf('Video triggers. Start at Unix time %0.3f s, %s',t_s(1), datetime(t_s(1),'ConvertFrom','posix')));
+title(sprintf('Friction. Start at Unix time %0.3f s, %s',t_s(1), datetime(t_s(1),'ConvertFrom','posix')));
 %title(sprintf('Video triggers. Start at Unix time %0.3f s, %s',t_s(1), ctime(t_s(1)))); % OCTAVE
 saveas(gcf,'test.png')
 
@@ -118,8 +123,8 @@ figure
 set(gcf,'position',[400 100 800 600]);
 disp('Plot data');
 plot(t_s(1:10:end)-t_s(1), Trigger(1:10:end)); hold on
-scatter(CamUnix_s-t_s(1)-TimeOff_s,zeros(size(CamUnix_s)),30,'r','filled');
-text(CamUnix_s-t_s(1)-TimeOff_s,zeros(size(CamUnix_s))-0.1,num2str(FileN));
+scatter(CamUnix_s-t_s(1),zeros(size(CamUnix_s)),30,'r','filled');
+text(CamUnix_s-t_s(1),zeros(size(CamUnix_s))-0.1,num2str(FileN));
 %xlim([t_s(1),t_s(end)]); % limit the x axis
 %xlim([0 t_s(end)-t_s(1)]); % limit the x axis
 xlabel('time, s');
