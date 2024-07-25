@@ -50,9 +50,9 @@ end
 %% apply calibrations to data
 t_s             = t_s+StartUnix_s;
 data            = movmean(data,fil);
-M_Nm            = (data(:,1)-1.86021e-4).*cal.Slope(1)+cal.Intercept(1);
-F_N             = (data(:,2)+1.4789e-1).*cal.Slope(2)+cal.Intercept(2);;
-F_N             = F_N;
+M_Nm            = (data(:,1)+1.4789e-1).*cal.Slope(1)+cal.Intercept(1);
+F_N             = (data(:,2)-1.86021e-4).*cal.Slope(2)+cal.Intercept(2);
+F_N             = F_N- (CorrK*M_Nm);
 Rot1_deg        = data(:,3).*cal.Slope(3)+cal.Intercept(3);
 Rot2_deg        = data(:,4).*cal.Slope(4)+cal.Intercept(4);
 VDisp_m         = data(:,5).*cal.Slope(5)+cal.Intercept(5);
